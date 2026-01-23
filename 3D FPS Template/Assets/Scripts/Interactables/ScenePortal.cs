@@ -14,7 +14,7 @@ public class ScenePortal : Interactable
             Debug.LogWarning($"The Scene {sceneName} does not exist!");
     }
 
-    public override void Interact(Collider2D other)
+    public override void Interact(Collider other)
     {
         base.Interact(other);
         SceneManager.LoadScene(sceneName);

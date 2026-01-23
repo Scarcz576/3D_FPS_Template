@@ -13,10 +13,10 @@ public class Interactable : MonoBehaviour
     public string hintText;
     
     private bool isInsideTrigger = false;
-    private Collider2D _other;
+    private Collider _other;
     
     // Když něco vstoupí do triggeru
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnTriggerEnter(Collider other)
     {
         // Pokud není potřeba stisknout klávesu pro interakci, interagujeme hned
         // Ještě kontrolujeme tag
@@ -35,7 +35,7 @@ public class Interactable : MonoBehaviour
     }
 
     private bool playerInRange = false;
-    private Collider2D playerCollider;
+    private Collider playerCollider;
 
     void Update()
     {
@@ -51,7 +51,7 @@ public class Interactable : MonoBehaviour
     }
     
     // When something exits the trigger
-    public void OnTriggerExit2D(Collider2D other)
+    public void OnTriggerExit(Collider other)
     {
         // If the player exits the trigger, stop interaction
         if (other.CompareTag(interactTag))
@@ -64,14 +64,14 @@ public class Interactable : MonoBehaviour
     }
 
     // Function for interaction, can be overridden in subclasses
-    public virtual void Interact(Collider2D other)
+    public virtual void Interact(Collider other)
     {
         Debug.Log($"Player interacted with {gameObject}");
         Interface.Instance.HideHint();
     }
 
     // Function for stopping interaction, can be overridden in subclasses
-    public virtual void StopInteraction(Collider2D other)
+    public virtual void StopInteraction(Collider other)
     {
         Debug.Log($"Player stopped interaction with {gameObject}");
     }

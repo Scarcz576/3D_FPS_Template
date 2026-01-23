@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public float maxHealth = 100f;
     private float _currentHealth;
     private int _score;
-    private Vector2 respawnPoint = Vector2.zero;
+    private Vector3 respawnPoint = Vector3.zero;
     public AudioSource  audioSource;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip scoreSound;
@@ -33,9 +33,10 @@ public class Player : MonoBehaviour
     }
     
     // Function for taking damage
-    public void TakeDamage(float amount, float strength, Vector2 origin)
+    public void TakeDamage(float amount, float strength, Vector3 origin)
     {
         // Take damage
+        Debug.Log ("Player get damage");
         _currentHealth -= amount;
         // Update health UI
         Interface.Instance.ShowHealth(_currentHealth,maxHealth);

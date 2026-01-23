@@ -7,7 +7,7 @@ public class Door : Interactable
     public GameObject toOpen;
 
     // When player interacts with the door, it tries to open
-    public override void Interact(Collider2D other)
+    public override void Interact(Collider other)
     {
         base.Interact(other);
         Open();

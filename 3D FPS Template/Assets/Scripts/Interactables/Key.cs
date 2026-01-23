@@ -14,7 +14,7 @@ public class Key : Interactable
     }
 
     // When player interacts with the key, it unlocks the door and destroys itself
-    public override void Interact(Collider2D other)
+    public override void Interact(Collider other)
     {
         base.Interact(other);
         door.Unlock();

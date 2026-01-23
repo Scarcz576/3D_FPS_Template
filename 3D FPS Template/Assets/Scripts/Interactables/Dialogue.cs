@@ -12,14 +12,14 @@ public class Dialogue : Interactable
     }
 
     // Show dialogue when interaction starts
-    public override void Interact(Collider2D other)
+    public override void Interact(Collider other)
     {
         base.Interact(other);
         dialogueUI.text = dialogueText;
     }
 
     // Clear dialogue when interaction stops
-    public override void StopInteraction(Collider2D other)
+    public override void StopInteraction(Collider other)
     {
         base.StopInteraction(other);
         dialogueUI.text = "";

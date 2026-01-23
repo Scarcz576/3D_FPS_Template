@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LookAt :Interactable
 {
-    [Tooltip("How long should we look? (in seconds)")]
+  /*  [Tooltip("How long should we look? (in seconds)")]
     [SerializeField] private float duration = 5f; // in seconds
     [SerializeField] private CinemachineCamera camera;
 
@@ -26,5 +26,5 @@ public class LookAt :Interactable
     {
         base.StopInteraction(other);
         HideCamera();
-    }
+    }*/
 }

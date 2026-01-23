@@ -10,7 +10,7 @@ public class Spikes : Interactable
         "How much the player will get pushed away upon contact. / Jak moc hráče posune když se jich dotkne.")]
     public float pushAmount = .01f;
 
-    public override void Interact(Collider2D other)
+    public override void Interact(Collider other)
     {
         base.Interact(other);
         other.GetComponent<Player>()?.TakeDamage(damageAmount,pushAmount,transform.position);
