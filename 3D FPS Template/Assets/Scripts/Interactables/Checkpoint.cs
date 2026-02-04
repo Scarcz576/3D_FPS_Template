@@ -11,7 +11,7 @@ public class Checkpoint : Interactable
     public override void Interact(Collider other)
     {
         base.Interact(other);
-        other.GetComponent<Player>()?.SetRespawnPoint(checkpointPosition);
+        other.GetComponent<Player>()?.SetRespawnPoint(GetCheckpointPosition());
     }
     
     
@@ -19,6 +19,12 @@ public class Checkpoint : Interactable
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(checkpointPosition, 0.3f);
+        Gizmos.DrawWireSphere(GetCheckpointPosition(), 0.3f);
+    }
+
+    private Vector3 GetCheckpointPosition()
+    {
+        // If not set in Inspector, default to the checkpoint object's position.
+        return checkpointPosition != Vector3.zero ? checkpointPosition : transform.position;
     }
 }

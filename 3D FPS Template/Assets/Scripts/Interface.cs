@@ -7,7 +7,7 @@ public class Interface : MonoBehaviour
     public TextMeshProUGUI dialogueUI;
     public TextMeshProUGUI scoreUI;
     public TextMeshProUGUI healthUI;
-    public TextMeshPro hintUI;
+    public TextMeshProUGUI hintUI;
     
     
     // This is called Singleton Pattern, it makes it easy to call this object from other scripts (like GetComponent but for just this single object)

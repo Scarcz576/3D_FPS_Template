@@ -1,6 +1,6 @@
-using TarodevController;
 using TMPro;
 using UnityEngine;
+using StarterAssets;
 
 public class Player : MonoBehaviour
 {
@@ -11,15 +11,17 @@ public class Player : MonoBehaviour
     public AudioSource  audioSource;
     [SerializeField] private AudioClip damageSound;
     [SerializeField] private AudioClip scoreSound;
+    private CharacterController _characterController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _currentHealth = maxHealth;
+        _characterController = GetComponent<CharacterController>();
     }
     
     // Nastavení respawn pointu na novou pozici
-    public void SetRespawnPoint(Vector2 newRespawnPoint)
+    public void SetRespawnPoint(Vector3 newRespawnPoint)
     {
         respawnPoint = newRespawnPoint;
     }
@@ -41,7 +43,15 @@ public class Player : MonoBehaviour
         // Update health UI
         Interface.Instance.ShowHealth(_currentHealth,maxHealth);
         // Knockback
-        transform.position += (transform.position - (Vector3)origin).normalized * strength;
+        Vector3 knockback = (transform.position - (Vector3)origin).normalized * strength;
+        if (_characterController != null && _characterController.enabled)
+        {
+            _characterController.Move(knockback);
+        }
+        else
+        {
+            transform.position += knockback;
+        }
         // Sound
         PlaySound(damageSound);
         
@@ -63,8 +73,26 @@ public class Player : MonoBehaviour
     // for now the player just respawns at the last respawn point, instead of dying
     private void Die()
     {
-        transform.position = respawnPoint;
+        Debug.Log("hráč zemřel");
+        RespawnAt(respawnPoint);
         _currentHealth = maxHealth;
         Interface.Instance.ShowHealth(_currentHealth, maxHealth);
+    }
+
+    private void RespawnAt(Vector3 position)
+    {
+        // Disable CharacterController so it won't override our teleport this frame.
+        if (_characterController != null)
+        {
+            _characterController.enabled = false;
+        }
+
+        transform.position = position;
+        Physics.SyncTransforms();
+
+        if (_characterController != null)
+        {
+            _characterController.enabled = true;
+        }
     }
 }
