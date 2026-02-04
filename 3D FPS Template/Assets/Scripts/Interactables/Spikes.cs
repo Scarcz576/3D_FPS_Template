@@ -27,8 +27,6 @@ public class Spikes : Interactable
         var player = other.GetComponentInParent<Player>();
         if (player == null)
         {
-            Debug.Log("není to hráč");
-
             return;
         }
 
