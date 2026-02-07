@@ -18,6 +18,7 @@ public class Key : Interactable
     {
         base.Interact(other);
         door.Unlock();
+        Debug.Log($"The Key {gameObject} unlocked the door {door}");
         Destroy(gameObject);
     }
 }

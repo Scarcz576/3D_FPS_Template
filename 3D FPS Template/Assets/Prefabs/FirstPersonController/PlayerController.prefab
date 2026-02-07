@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stats: {fileID: 11400000, guid: 22118a493c327264db7f9a032c9c197b, type: 2}
   MoveSpeed: 4
   SprintSpeed: 6
   RotationSpeed: 1

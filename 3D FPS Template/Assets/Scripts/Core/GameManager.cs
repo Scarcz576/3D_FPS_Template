@@ -1,18 +1,32 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+namespace Core
 {
-    public void RestartGame()
+    public class GameManager : MonoBehaviour
     {
-        SceneManager.LoadScene(0);
+    
+        // This is called Singleton Pattern, it makes it easy to call this object from other scripts (like GetComponent but for just this single object)
+        public static GameManager Instance;
+
+        public void Awake()
+        {
+            Instance = this;
+            if (Instance == null)
+                Debug.LogWarning("There is no Interface script in the Scene, did you add the Core prefab into the Scene?");
+        }
+    
+        public void RestartGame()
+        {
+            SceneManager.LoadScene(0);
+        }
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
+    
+    
+    
+    
     }
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
-    
-    
-    
-    
 }

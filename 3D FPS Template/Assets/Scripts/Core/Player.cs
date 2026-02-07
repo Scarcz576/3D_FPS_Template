@@ -1,6 +1,6 @@
+using Core;
 using TMPro;
 using UnityEngine;
-using StarterAssets;
 
 public class Player : MonoBehaviour
 {
