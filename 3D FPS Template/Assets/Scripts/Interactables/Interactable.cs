@@ -30,6 +30,7 @@ public class Interactable : MonoBehaviour
         {
             playerInRange = other.CompareTag(interactTag);
             playerCollider = other;
+            isInsideTrigger = true;
             Interface.Instance.ShowHint($"Press {interactKey.ToString()} {hintText}");
         }
     }
@@ -37,7 +38,7 @@ public class Interactable : MonoBehaviour
     private bool playerInRange = false;
     private Collider playerCollider;
 
-    void Update()
+    void OnTriggerStay(Collider other)
     {
         // If player is in range and input interaction is required
         if (inputInteraction && playerInRange)
@@ -60,6 +61,7 @@ public class Interactable : MonoBehaviour
             Interface.Instance.HideHint();
             playerInRange = false;
             playerCollider = null;
+            isInsideTrigger = false;
         }
     }
 
