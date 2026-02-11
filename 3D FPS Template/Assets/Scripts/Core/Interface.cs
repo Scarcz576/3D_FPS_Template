@@ -53,5 +53,10 @@ namespace Core
         {
             if (healthUI != null) healthUI.text = $"Health : {currentHealth}/{maxHealth}";
         }
+
+        public void HideDialogue()
+        {
+            if (dialogueUI != null) dialogueUI.text = "";
+        }
     }
 }

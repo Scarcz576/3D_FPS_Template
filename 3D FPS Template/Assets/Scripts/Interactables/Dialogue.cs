@@ -6,23 +6,27 @@ using UnityEngine;
 public class Dialogue : Interactable
 {
     public string dialogueText = "Hello, this is a dialogue.";
-    private TextMeshProUGUI dialogueUI;
+    public Animator animator;
+
     private void Start()
     {
-        dialogueUI = Interface.Instance.dialogueUI;
+        animator = GetComponent<Animator>();
     }
 
     // Show dialogue when interaction starts
     public override void Interact(Collider other)
     {
         base.Interact(other);
-        dialogueUI.text = dialogueText;
+        Interface.Instance.ShowDialogue(dialogueText);
+        if (animator != null) animator.SetBool("talk", true);
     }
 
     // Clear dialogue when interaction stops
     public override void StopInteraction(Collider other)
     {
         base.StopInteraction(other);
-        dialogueUI.text = "";
+        Interface.Instance.HideDialogue();
+        if (animator != null) animator.SetBool("talk", false);
+
     }
 }
