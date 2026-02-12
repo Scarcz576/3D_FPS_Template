@@ -3417,6 +3417,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1507628425}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &34114256 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1753284404666650805, guid: 78aaf0d6152718845b8143642be35c2e, type: 3}
+  m_PrefabInstance: {fileID: 2070006724}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &55631007
 Mesh:
   m_ObjectHideFlags: 0
@@ -6316,7 +6321,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1476760405}
+  m_Mesh: {fileID: 559488693}
 --- !u!33 &653607990
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -16098,6 +16103,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1201903633333850796, guid: 78aaf0d6152718845b8143642be35c2e, type: 3}
+      propertyPath: Target.TrackingTarget
+      value: 
+      objectReference: {fileID: 34114256}
+    - target: {fileID: 1493377027707604677, guid: 78aaf0d6152718845b8143642be35c2e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3750005
+      objectReference: {fileID: 0}
     - target: {fileID: 3695561094663672926, guid: 78aaf0d6152718845b8143642be35c2e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.98071
@@ -16145,6 +16158,10 @@ PrefabInstance:
     - target: {fileID: 6242817933326068206, guid: 78aaf0d6152718845b8143642be35c2e, type: 3}
       propertyPath: BottomClamp
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6246868625705560549, guid: 78aaf0d6152718845b8143642be35c2e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3750005
       objectReference: {fileID: 0}
     - target: {fileID: 7171158586225836528, guid: 78aaf0d6152718845b8143642be35c2e, type: 3}
       propertyPath: m_Name
