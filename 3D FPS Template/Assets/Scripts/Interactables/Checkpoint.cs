@@ -24,7 +24,6 @@ public class Checkpoint : Interactable
 
     private Vector3 GetCheckpointPosition()
     {
-        // If not set in Inspector, default to the checkpoint object's position.
-        return checkpointPosition != Vector3.zero ? checkpointPosition : transform.position;
+        return transform.position + checkpointPosition;
     }
 }

@@ -3157,7 +3157,7 @@ MonoBehaviour:
   interactKey: 102
   inputInteraction: 0
   hintText: 
-  checkpointPosition: {x: 0, y: 2, z: 0}
+  checkpointPosition: {x: 0, y: 0, z: 0}
 --- !u!65 &-5056602421767363028
 BoxCollider:
   m_ObjectHideFlags: 0
