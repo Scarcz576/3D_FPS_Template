@@ -6,7 +6,6 @@ namespace LevelDesign
 {
     public class MovingPlatform : MonoBehaviour
     {
-        public string PlayerTag;
 
         private Rigidbody rb;
 

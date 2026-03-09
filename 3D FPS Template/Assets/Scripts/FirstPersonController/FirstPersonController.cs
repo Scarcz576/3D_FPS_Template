@@ -1,4 +1,5 @@
-﻿using TarodevController;
+﻿using System;
+using TarodevController;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -135,7 +136,9 @@ namespace FirstPersonController
 			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
 			// a reference to the players current horizontal velocity
-			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
+			Vector3 platformVelocity = externalMovement / Time.deltaTime;
+			Vector3 relativeVelocity = _controller.velocity - platformVelocity;
+			float currentHorizontalSpeed = new Vector3(relativeVelocity.x, 0.0f, relativeVelocity.z).magnitude;
 
 			float speedOffset = 0.1f;
 			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
@@ -168,37 +171,25 @@ namespace FirstPersonController
 			
 
 			// move the player
-			_controller.Move(Time.deltaTime * (inputDirection.normalized * _speed + new Vector3(0.0f, _verticalVelocity, 0.0f)) + GetExternalMovement() );
+			_controller.Move(Time.deltaTime * (inputDirection.normalized * _speed + new Vector3(0.0f, _verticalVelocity, 0.0f)) + externalMovement);
+		}
+	
+		public Vector3 CalculateExternalMovement(ControllerColliderHit hit)
+		{ 
+		var rb = hit.rigidbody;
+		if (rb != null)
+		{
+			return rb.linearVelocity * Time.deltaTime;
+		}
+		return Vector3.zero;
 		}
 
-		
-		
-		public Vector3 _lastPlatformPosition;
-		public Rigidbody _currentPlatform;
-		public Vector3 GetExternalMovement()
+		[SerializeField] private Vector3	externalMovement;
+
+		private void OnControllerColliderHit(ControllerColliderHit hit)
 		{
-			Ray ray = new Ray(transform.position, Vector3.down);
-			
-			if (Physics.Raycast(ray, out RaycastHit hit, 2f, Stats.GroundLayers))
-			{
-				if (hit.collider.TryGetComponent<Rigidbody>(out var rb))
-				{
-					if (_currentPlatform != rb)
-					{
-						_currentPlatform = rb;
-						_lastPlatformPosition = rb.position;
-					}
-					
-					
-					Vector3 delta = rb.position - _lastPlatformPosition;
-					_lastPlatformPosition = rb.position;
-					Debug.Log(delta);
-					return delta;
-				}
-			}
-			
-			_currentPlatform = null;
-			return Vector3.zero;
+			externalMovement = CalculateExternalMovement(hit);
+		    
 		}
 
 		private void JumpAndGravity()
@@ -229,6 +220,7 @@ namespace FirstPersonController
 			}
 			else
 			{
+				externalMovement = Vector3.zero;
 				// reset the jump timeout timer
 				_jumpTimeoutDelta = Stats.JumpTimeout;
 
