@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class LookAt :Interactable
 {
-  /*  [Tooltip("How long should we look? (in seconds)")]
+    [Tooltip("How long should we look? (in seconds)")]
     [SerializeField] private float duration = 5f; // in seconds
     [SerializeField] private CinemachineCamera camera;
 
-    public override void Interact(Collider2D other)
+    public override void Interact(Collider other)
     {
         base.Interact(other);
         ShowCamera();
@@ -22,9 +22,24 @@ public class LookAt :Interactable
     private void HideCamera() => camera?.gameObject.SetActive(false);
     
 
-    public override void StopInteraction(Collider2D other)
+    public override void StopInteraction(Collider other)
     {
         base.StopInteraction(other);
         HideCamera();
-    }*/
+    }
+    
+	private void OnDrawGizmos() // Shows a debug sphere where to teleport player
+	{
+		Gizmos.color = Color.red;
+    
+		var boxCollider = GetComponent<Collider>() as BoxCollider;
+	    
+		if (boxCollider)
+			Gizmos.DrawWireCube(boxCollider.center+transform.position,boxCollider.size);
+		if (camera)
+			Gizmos.DrawWireCube(camera.transform.position, Vector3.one*3f);
+    
+	}
+    
+    
 }

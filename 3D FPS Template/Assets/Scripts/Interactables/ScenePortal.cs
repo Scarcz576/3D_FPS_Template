@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,4 +19,15 @@ public class ScenePortal : Interactable
         base.Interact(other);
         SceneManager.LoadScene(sceneName);
     }
+    
+    
+    
+	// Implement OnDrawGizmos if you want to draw gizmos that are also pickable and always drawn.
+	protected void OnDrawGizmos()
+	{
+		var boxCollider = GetComponent<Collider>() as BoxCollider;
+		Gizmos.color = Color.darkGreen;
+		if (boxCollider)
+			Gizmos.DrawWireCube(boxCollider.center+transform.position,boxCollider.size);
+	}
 }

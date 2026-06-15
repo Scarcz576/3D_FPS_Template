@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 public class Portal : Interactable
@@ -11,12 +11,20 @@ public class Portal : Interactable
     {
         base.Interact(other);
         // Teleport the player to the specified location
-        other.transform.position = teleportLocation;
+	    other.transform.position = teleportLocation + transform.position;
     }
 
     private void OnDrawGizmos() // Shows a debug sphere where to teleport player
     {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(teleportLocation, 0.3f);
+	    Gizmos.DrawWireSphere(teleportLocation + transform.position, 0.3f);
+    
+	    var boxCollider = GetComponent<Collider>() as BoxCollider;
+	    
+	    if (boxCollider)
+		    Gizmos.DrawWireCube(boxCollider.center+transform.position,boxCollider.size);
+    
     }
+    
+	
 }
