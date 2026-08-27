@@ -30,7 +30,7 @@ public class Spikes : Interactable
             return;
         }
 
-        int id = player.GetInstanceID();
+        int id = player.transform.GetSiblingIndex();
         if (_lastHitTimeByPlayer.TryGetValue(id, out float lastHitTime))
         {
             if (Time.time - lastHitTime < hitCooldown)
