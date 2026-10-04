@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.fmod.fmod-for-unity.v204": "file:C:/Users/mikyf/Downloads/fmodstudio20400.tgz",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "2.0.14",
     "com.unity.burst": "1.8.29",
@@ -13,7 +14,7 @@
     "com.unity.mathematics": "1.4.0",
     "com.unity.multiplayer.center": "1.0.1",
     "com.unity.nuget.mono-cecil": "1.11.6",
-    "com.unity.package-validation-suite": "0.22.0-preview",
+    "com.unity.package-validation-suite": "0.86.0-preview",
     "com.unity.probuilder": "6.1.2",
     "com.unity.render-pipelines.core": "17.5.0",
     "com.unity.render-pipelines.universal": "17.5.0",

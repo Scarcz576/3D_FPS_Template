@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.fmod.fmod-for-unity.v204": {
+      "version": "file:C:/Users/mikyf/Downloads/fmodstudio20400.tgz",
+      "depth": 0,
+      "source": "local-tarball",
+      "dependencies": {}
+    },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
       "depth": 0,
@@ -110,7 +116,7 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.package-validation-suite": {
-      "version": "0.22.0-preview",
+      "version": "0.86.0-preview",
       "depth": 0,
       "source": "registry",
       "dependencies": {
